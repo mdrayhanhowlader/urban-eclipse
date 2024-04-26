@@ -60,7 +60,7 @@ const components: { title: string; href: string; description: string }[] = [
 export default function Header() {
   return (
 <section>
-<div className="w-[90%] mx-auto flex justify-between items-center">
+<div className="w-[90%] mx-auto flex justify-between items-center py-4">
 <div className="">
         <h1 className="text-xl font-bold text-black">URBAN ECLIPSE</h1>
     </div>
