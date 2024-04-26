@@ -12,7 +12,6 @@ export const Carousel = () => {
     "https://source.unsplash.com/1200x540/?sea",
   ];
 
-  
   const prevSlider = () =>
     setCurrentSlider((currentSlider) =>
       currentSlider === 0 ? carouselImages.length - 1 : currentSlider - 1
@@ -25,7 +24,6 @@ export const Carousel = () => {
     [carouselImages.length]
   );
 
-  // if you don't want to change the slider automatically then you can just remove the useEffect
   useEffect(() => {
     const intervalId = setInterval(() => {
       nextSlider();
@@ -40,7 +38,7 @@ export const Carousel = () => {
         onClick={prevSlider}
         className="absolute top-1/2 left-3 z-50 flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
       >
-        <svg
+         <svg
           className="w-4 h-4 md:w-6 md:h-6 icon"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +63,7 @@ export const Carousel = () => {
         onClick={nextSlider}
         className="absolute top-1/2 z-50 right-3  flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
       >
-        <svg
+       <svg
           className="w-4 h-4 md:w-6 md:h-6 icon"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -100,28 +98,18 @@ export const Carousel = () => {
       </div>
       {/* Carousel container */}
       <div
-        className="ease-linear duration-500 flex transform-gpu"
-        style={{ transform: `translateX(-${currentSlider * 100}%)` }}
+        className="ease-linear duration-500 flex transform-gpu overflow-hidden"
+        style={{ width: `${carouselImages.length * 100}%`, transform: `translateX(-${currentSlider * (100 / carouselImages.length)}%)` }}
       >
         {/* sliders */}
         {carouselImages.map((slide, inx) => (
           <div
             key={inx}
             className="w-full h-full"
-            style={{ backgroundImage: `url(${slide})`, width: '100%', height: '300px' }}
+            style={{ backgroundImage: `url(${slide})`, width: `${100 / carouselImages.length}%`, height: '300px', float: 'left' }}
           >
            <h1>HEllo world</h1>
           </div>
-            // <Image
-            //   width={300}
-            //   height={500}
-            //   priority
-            //   key={slide}
-            //   src={slide}
-            //   className=" bg-black/20 sm:h-96 md:h-[540px] object-cover"
-            //   alt={`Slider - ${inx + 1}`}
-            // />
-    
         ))}
       </div>
     </div>
